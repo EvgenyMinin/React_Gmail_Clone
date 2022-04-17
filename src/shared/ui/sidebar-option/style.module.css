@@ -1,0 +1,35 @@
+.sidebarOption {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 10px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    color: gray;
+}
+
+.sidebarOption > p {
+    display: none;
+}
+
+.sidebarOption:hover {
+    cursor: pointer;
+    background-color: whitesmoke;
+}
+
+.sidebarOption > h3 {
+    flex: 1;
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+.selected,
+.selected:hover {
+    background-color: #fcecec;
+    color: #c04b37;
+    font-weight: 800;
+}
+
+.number > p {
+    display: block;
+}

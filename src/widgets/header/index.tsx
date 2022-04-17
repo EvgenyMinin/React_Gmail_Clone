@@ -1,3 +1,5 @@
+import { FC } from 'react';
+
 import { Avatar, IconButton, Input } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
@@ -7,7 +9,7 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 
 import styles from "./style.module.css";
 
-const Header = () => {
+export const Header: FC = () => {
     return (
         <div className={styles.header}>
             <div className={styles.header__left}>
@@ -39,5 +41,3 @@ const Header = () => {
         </div>
     );
 };
-
-export default Header;
