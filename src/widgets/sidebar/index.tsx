@@ -9,7 +9,7 @@ import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import PersonIcon from "@mui/icons-material/Person";
 import PhoneIcon from "@mui/icons-material/Phone";
-import DuoIcon from '@mui/icons-material/Duo';
+import DuoIcon from "@mui/icons-material/Duo";
 
 import { SidebarOption } from "../../shared";
 
@@ -17,7 +17,7 @@ import styles from "./style.module.css";
 
 export const Sidebar: FC = () => {
     return (
-        <div>
+        <div className={styles.sidebar}>
             <Button startIcon={<AddIcon fontSize="large" />} className={styles.compose}>
                 COMPOSE
             </Button>

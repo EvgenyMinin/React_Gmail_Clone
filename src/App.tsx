@@ -1,7 +1,9 @@
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { Header, Sidebar } from "./widgets";
 import { EmailList, Mail } from "./pages";
+
+import styles from "./styles.module.css";
 
 function App() {
     return (
@@ -9,7 +11,7 @@ function App() {
             <div>
                 <Header />
 
-                <div>
+                <div className={styles.app}>
                     <Sidebar />
 
                     <Switch>
