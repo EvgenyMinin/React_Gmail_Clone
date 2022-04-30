@@ -1,2 +1,3 @@
-export * from "./sidebar-option";
+export * from "./email-row";
 export * from "./section";
+export * from "./sidebar-option";
