@@ -75,4 +75,4 @@ export const incrementIfOdd =
         }
     };
 
-export default counterSlice.reducer;
+export const counterReducer = counterSlice.reducer;

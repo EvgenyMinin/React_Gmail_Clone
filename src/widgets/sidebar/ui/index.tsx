@@ -11,14 +11,21 @@ import PersonIcon from "@mui/icons-material/Person";
 import PhoneIcon from "@mui/icons-material/Phone";
 import DuoIcon from "@mui/icons-material/Duo";
 
-import { SidebarOption } from "../../shared";
+import { SidebarOption } from "../../../shared";
 
 import styles from "./style.module.css";
+import { useAppDispatch } from "../../../app/hooks";
+import { openSendMessage } from "..";
 
 export const Sidebar: FC = () => {
+    const dispatch = useAppDispatch();
+    const composeHandler = () => {
+        dispatch(openSendMessage());
+    };
+
     return (
         <div className={styles.sidebar}>
-            <Button startIcon={<AddIcon fontSize="large" />} className={styles.compose}>
+            <Button onClick={composeHandler} startIcon={<AddIcon fontSize="large" />} className={styles.compose}>
                 COMPOSE
             </Button>
 

@@ -1,16 +1,18 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import { Header, Sidebar } from "./widgets";
+import { useAppSelector } from "./app/hooks";
+import { Header, messageIsOpenSelector, SendMail, Sidebar } from "./widgets";
 import { EmailList, Mail } from "./pages";
 
 import styles from "./styles.module.css";
 
 function App() {
+    const messageIsOpen = useAppSelector(messageIsOpenSelector);
+
     return (
         <Router>
             <div>
                 <Header />
-
                 <div className={styles.app}>
                     <Sidebar />
 
@@ -23,7 +25,8 @@ function App() {
                         </Route>
                     </Switch>
                 </div>
-                <h2>Let's build Gmail</h2>
+
+                {messageIsOpen && <SendMail />}
             </div>
         </Router>
     );
