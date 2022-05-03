@@ -1,0 +1,37 @@
+.body {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.header > h2 {
+    font-weight: 400;
+    margin-right: 20px;
+}
+
+.header > p {
+    margin-left: 20px;
+}
+
+.time {
+    position: absolute;
+    right: 0;
+    top: 24px;
+    font-size: 12px;
+    color: gray;
+}
+
+.icon {
+    color: #e8ab02;
+}
+
+.message > p {
+    padding: 10px;
+    overflow-wrap: break-word;
+}

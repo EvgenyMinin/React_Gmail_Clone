@@ -1,0 +1,11 @@
+.mail {
+    width: 100%;
+    flex: 1;
+}
+
+.mailTools {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid whitesmoke;
+    margin-bottom: 16px;
+}
