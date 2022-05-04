@@ -11,16 +11,17 @@ import PersonIcon from "@mui/icons-material/Person";
 import PhoneIcon from "@mui/icons-material/Phone";
 import DuoIcon from "@mui/icons-material/Duo";
 
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { SidebarOption } from "../../../shared";
+import { messageIsOpenSelector, openSendMessage } from "..";
 
 import styles from "./style.module.css";
-import { useAppDispatch } from "../../../app/hooks";
-import { openSendMessage } from "..";
 
 export const Sidebar: FC = () => {
     const dispatch = useAppDispatch();
+    const isOpenMessageModal = useAppSelector(messageIsOpenSelector);
     const composeHandler = () => {
-        dispatch(openSendMessage());
+        !isOpenMessageModal && dispatch(openSendMessage());
     };
 
     return (
