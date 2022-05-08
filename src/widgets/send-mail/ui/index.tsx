@@ -1,9 +1,11 @@
 import { useForm } from "react-hook-form";
 import { Button } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 import { useAppDispatch } from "../../../app/hooks";
 import { closeSendMessage } from "../..";
+import { db } from '../../../firebase';
 
 import styles from "./styles.module.css";
 
@@ -20,8 +22,12 @@ export const SendMail = () => {
         formState: { errors },
     } = useForm<FormData>();
     const dispatch = useAppDispatch();
+    const emailsCollectionRef = collection(db, "emails");
 
-    const onSubmit = (formData: FormData) => console.log(formData);
+    const onSubmit = (formData: FormData) => {
+        addDoc(emailsCollectionRef, { ...formData, timeStamp: serverTimestamp() });
+        dispatch(closeSendMessage());
+    };
     const closeModalHandler = () => {
         dispatch(closeSendMessage());
     };
