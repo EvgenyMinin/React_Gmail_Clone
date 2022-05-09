@@ -1,10 +1,12 @@
 import { configureStore, ThunkAction, Action, combineReducers } from "@reduxjs/toolkit";
 import { counterSlice } from "../features/counter/counterSlice";
+import { emailListSlice } from '../pages';
 import { composeSlice } from "../widgets";
 
 const reducer = combineReducers({
     counter: counterSlice.reducer,
     mail: composeSlice.reducer,
+    emailList: emailListSlice.emailListReducer,
 });
 
 export const store = configureStore({
