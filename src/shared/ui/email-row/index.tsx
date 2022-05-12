@@ -8,14 +8,13 @@ import LabelImportantIcon from "@mui/icons-material/LabelImportant";
 import styles from "./styles.module.css";
 
 type OwnProps = {
-    id: string;
     title: string;
     subject: string;
     description: string;
     date: string;
 };
 
-export const EmailRow: FC<OwnProps> = ({ id, title, subject, description, date }) => {
+export const EmailRow: FC<OwnProps> = ({ title, subject, description, date }) => {
     const history = useHistory();
     const goToEmailDetail = () => history.push("/mail");
 

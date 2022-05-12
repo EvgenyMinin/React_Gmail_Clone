@@ -14,8 +14,10 @@ const emailListSlice = createSlice({
     initialState,
 
     reducers: {
-        setEmailList(_state, { payload }) {
-            return { ...payload };
+        setEmailList(state, { payload }) {
+            state.emailList = payload;
+
+            return state;
         },
     },
 });

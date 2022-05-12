@@ -1,7 +1,9 @@
-import { collection, getDocs } from "firebase/firestore";
+import { query, collection, orderBy, onSnapshot } from "firebase/firestore";
 import { FC, useEffect } from "react";
-import { useAppDispatch } from "../../../app/hooks";
+import dayjs from "dayjs";
 
+import { emailListSelectors } from "../model";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { Sections, SettingsLeft, SettingsRight } from "../../../features";
 import { db } from "../../../firebase";
 import { EmailRow } from "../../../shared";
@@ -12,14 +14,17 @@ import styles from "./styles.module.css";
 export const EmailList: FC = () => {
     const emailsCollectionRef = collection(db, "emails");
     const dispatch = useAppDispatch();
+    const { emailList } = useAppSelector(emailListSelectors.emailListSelector);
+    const q = query(emailsCollectionRef, orderBy("timeStamp", "desc"));
 
     useEffect(() => {
-        (async () => {
-            const res = await getDocs(emailsCollectionRef);
-            const data = res.docs.map((doc) => ({ ...doc.data() }));
+        const unsubscribe = onSnapshot(q, (snapshot) => {
+            const data = snapshot?.docs?.map((doc) => ({ ...doc.data(), id: doc.id }));
             dispatch(emailListSliceActions.setEmailList(data));
-        })();
-    }, [emailsCollectionRef, dispatch]);
+        });
+
+        return () => unsubscribe();
+    }, []);
 
     return (
         <div className={styles.container}>
@@ -32,7 +37,13 @@ export const EmailList: FC = () => {
             <Sections />
 
             <div className={styles.emailList}>
-                <EmailRow id="1" title="Friends" subject="The End" description="The best series ever" date="30.04.2022" />
+                {emailList.map(({ id, to, subject, message, timeStamp }) => {
+                    const mailDate = new Date(timeStamp?.seconds * 1000);
+                    const prevDays = dayjs().diff(dayjs(mailDate), "d");
+                    const date = prevDays >= 1 ? dayjs(mailDate).format("DD.MM.YYYY") : dayjs(mailDate).format("HH:mm");
+
+                    return <EmailRow key={id} title={to} subject={subject} description={message} date={date} />;
+                })}
             </div>
         </div>
     );

@@ -1,6 +1,6 @@
 import { configureStore, ThunkAction, Action, combineReducers } from "@reduxjs/toolkit";
 import { counterSlice } from "../features/counter/counterSlice";
-import { emailListSlice } from '../pages';
+import { emailListSlice } from "../pages";
 import { composeSlice } from "../widgets";
 
 const reducer = combineReducers({
@@ -11,6 +11,10 @@ const reducer = combineReducers({
 
 export const store = configureStore({
     reducer,
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: false,
+        }),
 });
 
 export type AppDispatch = typeof store.dispatch;
