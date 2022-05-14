@@ -1,12 +1,11 @@
 import { configureStore, ThunkAction, Action, combineReducers } from "@reduxjs/toolkit";
 import { counterReducer } from "../features/counter/counterSlice";
-import { emailListSlice } from "../pages";
-import { toggleSendMessageReducer, selectMailReducer } from "../widgets";
+import { toggleSendMessageReducer, selectMailReducer, emailListReducer } from "../widgets";
 
 const reducer = combineReducers({
     counter: counterReducer,
     compose: toggleSendMessageReducer,
-    emailList: emailListSlice.emailListReducer,
+    emailList: emailListReducer,
     selectedEmail: selectMailReducer,
 });
 

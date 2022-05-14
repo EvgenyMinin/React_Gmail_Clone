@@ -1,2 +1,2 @@
-export * from "./email-list";
+export * from "./main";
 export * from "./mail";

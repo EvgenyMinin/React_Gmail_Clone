@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { useAppSelector } from "./app/hooks";
 import { Header, messageIsOpenSelector, SendMail, Sidebar } from "./widgets";
-import { EmailList, Mail } from "./pages";
+import { Main, Mail } from "./pages";
 
 import styles from "./styles.module.css";
 
@@ -21,7 +21,7 @@ function App() {
                             <Mail />
                         </Route>
                         <Route path="/">
-                            <EmailList />
+                            <Main />
                         </Route>
                     </Switch>
                 </div>

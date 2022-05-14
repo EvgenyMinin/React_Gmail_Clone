@@ -22,6 +22,6 @@ const emailListSlice = createSlice({
     },
 });
 
-export const emailListSliceActions = emailListSlice.actions;
+export const { setEmailList } = emailListSlice.actions;
 
 export const emailListReducer = emailListSlice.reducer;
