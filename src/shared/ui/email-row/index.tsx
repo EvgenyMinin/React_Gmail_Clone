@@ -5,18 +5,20 @@ import { useHistory } from "react-router-dom";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import LabelImportantIcon from "@mui/icons-material/LabelImportant";
 
+import { useAppDispatch } from "../../../app/hooks";
+import { SelectedEmail } from "../..";
+import { setMail } from "../../../widgets";
+
 import styles from "./styles.module.css";
 
-type OwnProps = {
-    title: string;
-    subject: string;
-    description: string;
-    date: string;
-};
-
-export const EmailRow: FC<OwnProps> = ({ title, subject, description, date }) => {
+export const EmailRow: FC<SelectedEmail> = ({ title, subject, description, date }) => {
     const history = useHistory();
-    const goToEmailDetail = () => history.push("/mail");
+    const dispatch = useAppDispatch();
+
+    const goToEmailDetail = () => {
+        dispatch(setMail({ title, subject, description, date }));
+        history.push("/mail");
+    };
 
     return (
         <div className={styles.emailRow} onClick={goToEmailDetail}>

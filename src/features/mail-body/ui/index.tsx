@@ -1,20 +1,27 @@
 import LabelImportantIcon from "@mui/icons-material/LabelImportant";
 
+import { useAppSelector } from "../../../app/hooks";
+import { selectedMailSelector } from "../../../widgets";
+
 import styles from "./styles.module.css";
 
 export const MailBody = () => {
+    const {
+        mail: { title, subject, description, date },
+    } = useAppSelector(selectedMailSelector);
+
     return (
         <div className={styles.body}>
             <div className={styles.header}>
-                <h2>Subject</h2>
+                <h2>{subject}</h2>
 
                 <LabelImportantIcon className={styles.icon} />
-                <p>Title</p>
-                <p className={styles.time}>10pm</p>
+                <p>{title}</p>
+                <p className={styles.time}>{date}</p>
             </div>
 
             <div className={styles.message}>
-                <p>Message</p>
+                <p>{description}</p>
             </div>
         </div>
     );

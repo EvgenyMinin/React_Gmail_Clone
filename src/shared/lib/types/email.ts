@@ -7,3 +7,10 @@ export type Email = {
         seconds: number;
     };
 };
+
+export type SelectedEmail = {
+    title: string;
+    subject: string;
+    description: string;
+    date: string;
+};
